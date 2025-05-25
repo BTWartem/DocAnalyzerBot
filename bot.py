@@ -7,6 +7,33 @@ from config import BOT_TOKEN, DOCUMENTS_DIR, doc_manager
 import os
 
 
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Отправляет приветственное сообщение при команде /start"""
+    welcome_text = """
+    👋 Привет! Я бот для работы с документами. Вот что я умею:
+
+    • Анализировать PDF, DOCX и PPTX файлы
+    • Отвечать на вопросы по содержимому документов
+    • Искать информацию в загруженных файлах
+
+    Просто отправь мне файл или задай вопрос!
+    """
+    await update.message.reply_text(welcome_text)
+
+def main() -> None:
+    """Запуск бота"""
+    application = Application.builder().token("YOUR_BOT_TOKEN").build()
+    
+    # Регистрируем обработчики команд
+    application.add_handler(CommandHandler("start", start))
+    
+    # Запускаем бота
+    application.run_polling()
+
+if __name__ == "__main__":
+    main()
+
 async def handle_document(update: Update, context):
     if not update.message or not update.message.document:
         return
