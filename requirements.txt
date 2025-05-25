@@ -1,15 +1,11 @@
-from telegram import Update
-from telegram.ext import Application, MessageHandler, filters, CommandHandler
-from utils.file_parser import parse_file
-from utils.embeddings import create_vector_db, load_vector_db
-from utils.llm import generate_answer
-import os
-from pathlib import Path
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_chroma import Chroma
-from pdfminer.high_level import extract_text
-from docx import Document
-from pptx import Presentation
-from llama_cpp import Llama
-import re
+python-telegram-bot>=20.3
+langchain>=0.1.0
+langchain-text-splitters>=0.0.1
+langchain-huggingface>=0.0.2
+langchain-chroma>=0.0.2
+pdfminer.six>=2022.11.05
+python-docx>=0.8.11
+python-pptx>=0.6.21
+llama-cpp-python>=0.2.23
+chromadb>=0.4.15
+huggingface-hub>=0.19.4
